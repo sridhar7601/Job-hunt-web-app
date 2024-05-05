@@ -4,10 +4,10 @@ import CheckIcon from "@mui/icons-material/Check";
 // import CancelIcon from "@mui/icons-material/Cancel";
 
 const names = [
-  "1","2","3","4","5",
+  "1-10","10-50","50-100","150-300","500+"
 ];
 
-const Experience = () => {
+const Employee = () => {
   const [selectedNames, setSelectedNames] = useState([]);
 
   const handleOnChange = (event, newValue) => {
@@ -65,4 +65,4 @@ const Experience = () => {
   );
 };
 
-export default Experience;
+export default Employee;

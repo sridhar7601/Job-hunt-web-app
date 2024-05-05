@@ -1,5 +1,6 @@
-import React from 'react';
-import { Card as MuiCard, CardContent, Typography, Grid } from '@mui/material';
+import React, { useState } from 'react';
+import { Card as MuiCard, CardContent, Typography, Grid, Button, Skeleton } from '@mui/material';
+import { styled } from '@mui/material/styles';
 
 interface Job {
   id: string;
@@ -15,16 +16,43 @@ interface CardProps {
   job: Job;
 }
 
+const FadingText = styled('div')({
+  position: 'relative',
+  overflow: 'hidden',
+  '& p': {
+    margin: 0,
+  },
+  '&::after': {
+    content: '""',
+    position: 'absolute',
+    bottom: 0,
+    left: 0,
+    right: 0,
+    height: '3rem',
+    backgroundImage: 'linear-gradient(to bottom, rgba(255, 255, 255, 0), rgba(255, 255, 255, 1))',
+  },
+});
+
 const Card: React.FC<CardProps> = ({ job }) => {
+  const [showFullDescription, setShowFullDescription] = useState(false);
+
+  const toggleDescription = () => {
+    setShowFullDescription(!showFullDescription);
+  };
+
   return (
-    <MuiCard>
+    <MuiCard sx={{ maxWidth: 345, margin: '1rem' }}>
       <CardContent>
         <Grid container spacing={2}>
           {/* Column for company logo */}
           <Grid item xs={12}>
             <Grid container spacing={2}>
               <Grid item xs={12} sm={3}>
-                <img src={job.logoUrl} alt={`${job.company} logo`} style={{ width: '100%', maxWidth: '80px' }} />
+                {job.logoUrl ? (
+                  <img src={job.logoUrl} alt={`${job.company} logo`} style={{ width: '100%', maxWidth: '80px' }} />
+                ) : (
+                  <Skeleton variant="rectangular" width={80} height={80} />
+                )}
               </Grid>
               {/* Column for job details (name, role, location) */}
               <Grid item xs={12} sm={9}>
@@ -36,12 +64,24 @@ const Card: React.FC<CardProps> = ({ job }) => {
               </Grid>
             </Grid>
           </Grid>
-          {/* Column for description and experience */}
+          {/* Column for description and "Show More/Less" button */}
           <Grid item xs={12}>
-            <div>
+            {showFullDescription ? (
               <Typography>{job.description}</Typography>
-              <Typography>Experience: {job.experience}</Typography>
-            </div>
+            ) : (
+              <FadingText>
+                <Typography>{`${job.description.slice(0, 100)}...`}</Typography>
+              </FadingText>
+            )}
+            <Button onClick={toggleDescription} color="primary" size="small" sx={{ '&:hover': { backgroundColor: 'transparent' }, outline: 'none' }}>
+              {showFullDescription ? 'Show Less' : 'Show More'}
+            </Button>
+          </Grid>
+          {/* Column for experience */}
+          <Grid item xs={12}>
+            <Typography style={{ opacity: showFullDescription ? 1 : 0.7 }}>
+              {job.experience ? `Experience: ${job.experience}` : <Skeleton width={100} />}
+            </Typography>
           </Grid>
         </Grid>
       </CardContent>
