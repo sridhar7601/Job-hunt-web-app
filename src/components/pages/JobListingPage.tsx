@@ -9,6 +9,7 @@ import Remote from '../atom/Remote';
 import Role from '../atom/Roles';
 import SearchCompanyName from '../atom/SearchCompanyName';
 import { fetchJobListings } from '../../redux/jobsSlice';
+import { Box } from '@mui/system';
 
 const JobListingPage: React.FC = () => {
   const dispatch = useDispatch();
@@ -60,8 +61,10 @@ const JobListingPage: React.FC = () => {
           <SearchCompanyName />
         </div>
       </AppBar>
-      <div style={{ paddingTop: '100px',marginTop:'3rem' }}> {/* Increase the paddingTop here */}
-        <Grid container spacing={3}>
+      <Box sx={{ 
+  paddingTop: { xs: '100px', sm: '50px', md: '50px' },
+  marginTop: { xs: '17rem', sm: '12rem', md: '7rem' }
+}}>        <Grid container spacing={3}>
           {jobs.map((job, index) => (
             <Grid key={job.id + '-' + index} item xs={12} sm={6} md={4} style={{ minWidth: '300px' }}>
               <Card job={job} />
@@ -69,7 +72,7 @@ const JobListingPage: React.FC = () => {
           ))}
         </Grid>
         {jobStatus === 'loading' && <p>Loading...</p>}
-      </div>
+      </Box>
     </div>
   );
 };

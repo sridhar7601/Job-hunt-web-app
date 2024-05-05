@@ -21,7 +21,7 @@ const Experience = () => {
       <Autocomplete
         multiple
         id="experience-filter"
-        options={["1-10", "10-50", "50-100", "150-300", "500+"]}
+        options={["0-1", "1-3", "3-10"]}
         getOptionLabel={(option) => option}
         value={selectedNames}
         onChange={handleOnChange}

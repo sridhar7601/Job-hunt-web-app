@@ -10,7 +10,7 @@ const Remote = () => {
 
   const handleOnChange = (event, newValue) => {
     console.log("Selected location:", newValue);
-    dispatch(setLocationFilter(newValue));
+    dispatch(setLocationFilter(newValue.map(role => role.toLowerCase())));
     dispatch(filterJobs());
   };
 
@@ -19,7 +19,7 @@ const Remote = () => {
       <Autocomplete
         multiple
         id="location-filter"
-        options={["delhi ncr", "mumbai", "remote", "chennai", "bangalore"]}
+        options={["Delhi Ncr", "Mumbai", "Remote", "Chennai", "Bangalore"]}
         getOptionLabel={(option) => option}
         value={selectedNames}
         onChange={handleOnChange}

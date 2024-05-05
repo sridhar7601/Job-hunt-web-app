@@ -70,10 +70,10 @@ const Card: React.FC<CardProps> = ({ job }) => {
               </Grid>
               <Grid item xs={12} sm={9}>
                 <div>
-                  <Typography variant="h6">{job.title}</Typography>
+                  <Typography variant="h6">{job.title.toUpperCase()}</Typography>
                   <Typography color="textSecondary">{job.company}</Typography>
-                  <Typography>{job.location}</Typography>
-                </div>
+                  <Typography>{job.location.toUpperCase()}</Typography>
+</div>
               </Grid>
             </Grid>
           </Grid>
@@ -148,7 +148,7 @@ const Card: React.FC<CardProps> = ({ job }) => {
                     sx={{
                       backgroundColor: "#4c44db", // Change button background color
                       width: "100%", // Set button width to 100% of its container
-                      color: "black", // Change button text color to black
+                      color: "white", // Change button text color to black
                       fontSize: "14px", // Change font size
                       fontWeight: 500, // Change font weight
                       "&:hover": {
@@ -156,7 +156,7 @@ const Card: React.FC<CardProps> = ({ job }) => {
                       },
                     }}
                   >
-                    ⚡ Easy Apply
+                    🧑‍🍼 Referral
                   </Button>
                 </Grid>
               </Grid>

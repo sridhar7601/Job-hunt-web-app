@@ -10,16 +10,18 @@ const Roles = () => {
 
   const handleOnChange = (event, newValue) => {
     console.log("Selected role:", newValue);
-    dispatch(setRoleFilter(newValue));
+    // Convert the selected roles to lowercase before dispatching
+    dispatch(setRoleFilter(newValue.map(role => role.toLowerCase())));
     dispatch(filterJobs());
   };
+  
 
   return (
     <FormControl sx={{ m: 1, width: 250 }}>
       <Autocomplete
         multiple
         id="employee-filter"
-        options={["frontend", "ios", "android", "tech lead", "backend"]}
+        options={["Frontend", "Ios", "Android", "Tech lead", "Backend"]}
         getOptionLabel={(option) => option}
         value={selectedNames}
         onChange={handleOnChange}
