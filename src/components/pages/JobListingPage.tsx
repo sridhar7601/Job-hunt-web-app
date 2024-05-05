@@ -20,7 +20,7 @@ const JobListingPage: React.FC = () => {
     if (jobStatus === 'idle') {
       dispatch(fetchJobListings(page));
     }
-  }, [jobStatus, dispatch]);
+  }, [jobStatus, dispatch, page]);
 
   // Handle infinite scrolling
   useEffect(() => {

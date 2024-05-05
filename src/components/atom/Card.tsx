@@ -1,4 +1,3 @@
-// components/atom/Card.tsx
 import React, { useState } from "react";
 import {
   Card as MuiCard,
@@ -46,7 +45,6 @@ const FadingText = styled("div")({
 });
 
 const Card: React.FC<CardProps> = ({ job }) => {
-  // console.log(job, "job");
   const [showFullDescription, setShowFullDescription] = useState(false);
 
   const toggleDescription = () => {
@@ -54,12 +52,9 @@ const Card: React.FC<CardProps> = ({ job }) => {
   };
 
   return (
-    <MuiCard sx={{ maxWidth: 345, margin: "1rem" }}>
+    <MuiCard sx={{ maxWidth: 345, margin: "1rem", borderRadius: "16px" }}>
       <CardContent>
         <Grid container spacing={2}>
-          {/* Column for experience */}
-
-          {/* Column for company logo */}
           <Grid item xs={12}>
             <Grid container spacing={2}>
               <Grid item xs={12} sm={3}>
@@ -73,7 +68,6 @@ const Card: React.FC<CardProps> = ({ job }) => {
                   <Skeleton variant="rectangular" width={80} height={80} />
                 )}
               </Grid>
-              {/* Column for job details (name, role, location) */}
               <Grid item xs={12} sm={9}>
                 <div>
                   <Typography variant="h6">{job.title}</Typography>
@@ -83,14 +77,10 @@ const Card: React.FC<CardProps> = ({ job }) => {
               </Grid>
             </Grid>
           </Grid>
-          {/* Column for description and "Show More/Less" button */}
           <Grid item xs={12}>
-            {/* <Typography>
-              {job.minExp !== null ? `Min Experience: ${job.minExp} years` : 'Min Experience: Not specified'}
-            </Typography> */}
             <Typography>
               {job.minJdSalary !== null && job.maxJdSalary !== null ? (
-                `Salary: ${job.minJdSalary} - ${job.maxJdSalary} per year`
+                `Salary: ${job.minJdSalary} - ${job.maxJdSalary} ✅ per year`
               ) : (
                 <Typography>{`Yet to update`}</Typography>
               )}
@@ -113,6 +103,7 @@ const Card: React.FC<CardProps> = ({ job }) => {
               color="primary"
               size="small"
               sx={{
+                width: "100%", // Adjust button width here
                 "&:hover": { backgroundColor: "transparent" },
                 outline: "none",
               }}
@@ -120,15 +111,56 @@ const Card: React.FC<CardProps> = ({ job }) => {
               {showFullDescription ? "Show Less" : "Show More"}
             </Button>
           </Grid>
-          {/* Column for salary */}
-          <Grid item xs={12}>
-            <Typography style={{ opacity: showFullDescription ? 1 : 0.7 }}>
-              {job.minExp !== null && job.maxExp !== null ? (
-                `Experience: ${job.minExp} - ${job.maxExp}`
-              ) : (
-                <Typography>{`Yet to update`}</Typography>
-              )}
-            </Typography>
+          <Grid container spacing={2}>
+            <Grid item xs={12} sx={{ marginLeft: "10px" }}>
+              <Grid container spacing={2}>
+                <Grid item xs={12}>
+                  <Typography
+                    style={{ opacity: showFullDescription ? 1 : 0.7 }}
+                  >
+                    {job.minExp !== null && job.maxExp !== null ? (
+                      `Experience: ${job.minExp} - ${job.maxExp}`
+                    ) : (
+                      <Typography>{`Yet to update`}</Typography>
+                    )}
+                  </Typography>
+                </Grid>
+                <Grid item xs={12} md={6}>
+                  <Button
+                    variant="contained"
+                    sx={{
+                      backgroundColor: "#54f0c4", // Change button background color
+                      width: "100%", // Set button width to 100% of its container
+                      color: "black", // Change button text color to black
+                      fontSize: "14px", // Change font size
+                      fontWeight: 500, // Change font weight
+                      "&:hover": {
+                        backgroundColor: "#54f0c4", // Change hover background color
+                      },
+                    }}
+                  >
+                    ⚡ Easy Apply
+                  </Button>
+                </Grid>
+                <Grid item xs={12} md={6}>
+                  <Button
+                    variant="contained"
+                    sx={{
+                      backgroundColor: "#4c44db", // Change button background color
+                      width: "100%", // Set button width to 100% of its container
+                      color: "black", // Change button text color to black
+                      fontSize: "14px", // Change font size
+                      fontWeight: 500, // Change font weight
+                      "&:hover": {
+                        backgroundColor: "#4c44db", // Change hover background color
+                      },
+                    }}
+                  >
+                    ⚡ Easy Apply
+                  </Button>
+                </Grid>
+              </Grid>
+            </Grid>
           </Grid>
         </Grid>
       </CardContent>
