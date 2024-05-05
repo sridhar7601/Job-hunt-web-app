@@ -43,7 +43,7 @@ const JobListingPage: React.FC = () => {
 
   return (
     <div>
-      <AppBar position="fixed" style={{ top: 0, backgroundColor: 'transparent', boxShadow: 'none', position: 'relative' }}>
+      <AppBar position="fixed" style={{ top: 0, backgroundColor: 'transparent', boxShadow: 'none', position: 'absolute' }}>
         <div
           style={{
             display: 'flex',
@@ -60,14 +60,12 @@ const JobListingPage: React.FC = () => {
           <SearchCompanyName />
         </div>
       </AppBar>
-      <div
-        style={{ paddingTop: '64px', padding: '1rem', maxWidth: '1200px', margin: 'auto', zIndex: 1, overflow: 'auto' }}
-      >
+      <div style={{ paddingTop: '100px',marginTop:'3rem' }}> {/* Increase the paddingTop here */}
         <Grid container spacing={3}>
-        {jobs.map((job, index) => (
-  <Grid key={job.id + '-' + index} item xs={12} sm={6} md={4}>
-    <Card job={job} />
-  </Grid>
+          {jobs.map((job, index) => (
+            <Grid key={job.id + '-' + index} item xs={12} sm={6} md={4} style={{ minWidth: '300px' }}>
+              <Card job={job} />
+            </Grid>
           ))}
         </Grid>
         {jobStatus === 'loading' && <p>Loading...</p>}
