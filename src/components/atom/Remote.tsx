@@ -1,34 +1,21 @@
 import React, { useState } from "react";
 import { Autocomplete, TextField, FormControl, MenuItem } from "@mui/material";
 import CheckIcon from "@mui/icons-material/Check";
-// import CancelIcon from "@mui/icons-material/Cancel";
 
-const names = [
-  "Humaira Sims",
-  "Santiago Solis",
-  "Dawid Floyd",
-  "Mateo Barlow",
-  "Samia Navarro",
-  "Kaden Fields",
-  "Genevieve Watkins",
-  "Mariah Hickman",
-  "Rocco Richardson",
-  "Harris Glenn"
-];
-
-const Remote = () => {
+const Remote = ({ onChange }) => {
   const [selectedNames, setSelectedNames] = useState([]);
 
   const handleOnChange = (event, newValue) => {
     setSelectedNames(newValue);
+    onChange(newValue);
   };
 
   return (
     <FormControl sx={{ m: 1, width: 250 }}>
       <Autocomplete
         multiple
-        id="tags-standard"
-        options={names}
+        id="location-filter"
+        options={["delhi ncr", "mumbai", "remote", "chennai", "bangalore"]}
         getOptionLabel={(option) => option}
         value={selectedNames}
         onChange={handleOnChange}
@@ -47,29 +34,11 @@ const Remote = () => {
           <TextField
             {...params}
             variant="outlined"
-            label="Multiple Autocomplete"
-            placeholder="Favorites"
+            label="Location"
+            placeholder="Select Locations"
           />
         )}
       />
-      {/* <Stack gap={1} direction="row" flexWrap="wrap">
-        {selectedNames.map((name) => (
-          <Chip
-            key={name}
-            label={name}
-            onDelete={() => {
-              setSelectedNames((prevNames) =>
-                prevNames.filter((prevName) => prevName !== name)
-              );
-            }}
-            deleteIcon={
-              <CancelIcon
-                onMouseDown={(event) => event.stopPropagation()}
-              />
-            }
-          />
-        ))}
-      </Stack> */}
     </FormControl>
   );
 };

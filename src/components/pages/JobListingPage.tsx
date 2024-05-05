@@ -6,16 +6,20 @@ import Experience from '../atom/Experience';
 import MinBasePay from '../atom/MinBasePay';
 import Remote from '../atom/Remote';
 import Role from '../atom/Roles';
-import Employee from '../atom/Employee';
 import SearchCompanyName from '../atom/SearchCompanyName';
-
 
 const JobListingPage: React.FC = () => {
   const [jobListings, setJobListings] = useState([]);
   const [isLoading, setIsLoading] = useState(false);
   const [page, setPage] = useState(1);
+  const [experienceFilter, setExperienceFilter] = useState([]);
+  const [minBasePayFilter, setMinBasePayFilter] = useState([]);
+  const [remoteFilter, setRemoteFilter] = useState([]);
+  const [roleFilter, setRoleFilter] = useState([]);
+  const [searchCompanyNameFilter, setSearchCompanyNameFilter] = useState('');
   const containerRef = useRef<HTMLDivElement>(null);
 
+  // Function to fetch more job listings
   const fetchMoreData = async () => {
     try {
       setIsLoading(true);
@@ -26,19 +30,22 @@ const JobListingPage: React.FC = () => {
         company: job.companyName,
         location: job.location,
         description: job.jobDetailsFromCompany,
-        experience: `${job.minExp ?? 0}-${job.maxExp ?? 0} years`,
+        minExp: job.minExp,
+        maxExp: job.maxExp,
+        minJdSalary: job.minJdSalary,
+        maxJdSalary: job.maxJdSalary,
         logoUrl: job.logoUrl,
       }));
       setJobListings((prevListings) => [...prevListings, ...formattedJobs]);
       setPage((prevPage) => prevPage + 1);
     } catch (error) {
       console.error('Error fetching job listings:', error);
-  //handle the error (set an error state)
     } finally {
       setIsLoading(false);
     }
   };
 
+  // Effect to fetch more data when scrolling
   useEffect(() => {
     fetchMoreData(); 
   }, []);
@@ -62,6 +69,7 @@ const JobListingPage: React.FC = () => {
     };
   }, [isLoading]);
 
+  // Effect to scroll to bottom when new job listings are loaded
   const scrollToBottom = () => {
     const container = containerRef.current;
     if (container) {
@@ -72,6 +80,21 @@ const JobListingPage: React.FC = () => {
   useEffect(() => {
     scrollToBottom();
   }, [jobListings]);
+
+  // Function to filter job listings based on filters
+  const filterJobListings = () => {
+    // Implement your filtering logic here based on the state variables
+    console.log("Experience Filter:", experienceFilter);
+    console.log("Min Base Pay Filter:", minBasePayFilter);
+    console.log("Remote Filter:", remoteFilter);
+    console.log("Role Filter:", roleFilter);
+    console.log("Search Company Name Filter:", searchCompanyNameFilter);
+  };
+
+  // Effect to log filtered data whenever filters change
+  useEffect(() => {
+    filterJobListings();
+  }, [experienceFilter, minBasePayFilter, remoteFilter, roleFilter, searchCompanyNameFilter]);
 
   return (
     <div>
@@ -85,13 +108,11 @@ const JobListingPage: React.FC = () => {
             margin: '10px',
           }}
         >
-          <Role />
-         <Employee />
-          <Experience />
-          <Remote />
-          <MinBasePay />
-          <SearchCompanyName />
-       
+          <Role onChange={setRoleFilter} />
+          <Experience onChange={setExperienceFilter} />
+          <Remote onChange={setRemoteFilter} />
+          <MinBasePay onChange={setMinBasePayFilter} />
+          <SearchCompanyName onChange={setSearchCompanyNameFilter} />
         </div>
       </AppBar>
       <div

@@ -1,25 +1,22 @@
+
 import React, { useState } from "react";
 import { Autocomplete, TextField, FormControl, MenuItem } from "@mui/material";
 import CheckIcon from "@mui/icons-material/Check";
-// import CancelIcon from "@mui/icons-material/Cancel";
 
-const names = [
-  "1","2","3","4","5",
-];
-
-const Experience = () => {
+const Experience = ({ onChange }) => {
   const [selectedNames, setSelectedNames] = useState([]);
 
   const handleOnChange = (event, newValue) => {
     setSelectedNames(newValue);
+    onChange(newValue);
   };
 
   return (
     <FormControl sx={{ m: 1, width: 250 }}>
       <Autocomplete
         multiple
-        id="tags-standard"
-        options={names}
+        id="experience-filter"
+        options={["1-10", "10-50", "50-100", "150-300", "500+"]}
         getOptionLabel={(option) => option}
         value={selectedNames}
         onChange={handleOnChange}
@@ -38,29 +35,11 @@ const Experience = () => {
           <TextField
             {...params}
             variant="outlined"
-            label="Multiple Autocomplete"
-            placeholder="Favorites"
+            label="Experience Range"
+            placeholder="Select Experience Ranges"
           />
         )}
       />
-      {/* <Stack gap={1} direction="row" flexWrap="wrap">
-        {selectedNames.map((name) => (
-          <Chip
-            key={name}
-            label={name}
-            onDelete={() => {
-              setSelectedNames((prevNames) =>
-                prevNames.filter((prevName) => prevName !== name)
-              );
-            }}
-            deleteIcon={
-              <CancelIcon
-                onMouseDown={(event) => event.stopPropagation()}
-              />
-            }
-          />
-        ))}
-      </Stack> */}
     </FormControl>
   );
 };
