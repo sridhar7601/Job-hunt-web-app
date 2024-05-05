@@ -1,7 +1,6 @@
-// src/components/JobListingPage.tsx
 import React, { useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
-import { Grid, AppBar } from '@mui/material';
+import { Grid, AppBar, Typography } from '@mui/material';
 import Card from '../atom/Card';
 import Experience from '../atom/Experience';
 import MinBasePay from '../atom/MinBasePay';
@@ -64,13 +63,23 @@ const JobListingPage: React.FC = () => {
       <Box sx={{ 
   paddingTop: { xs: '100px', sm: '50px', md: '50px' },
   marginTop: { xs: '17rem', sm: '12rem', md: '7rem' }
-}}>        <Grid container spacing={3}>
-          {jobs.map((job, index) => (
-            <Grid key={job.id + '-' + index} item xs={12} sm={6} md={4} style={{ minWidth: '300px' }}>
-              <Card job={job} />
-            </Grid>
-          ))}
-        </Grid>
+}}>        
+       <Grid container spacing={3}>
+  {jobs.length > 0 ? (
+    jobs.map((job, index) => (
+      <Grid key={job.id + '-' + index} item xs={12} sm={6} md={4} style={{ minWidth: '300px' }}>
+        <Card job={job} />
+      </Grid>
+    ))
+  ) : (
+    <Grid container justifyContent="center" position="absolute" alignItems="center" style={{ minHeight: '0vh' }}>
+      <Box>
+        <Typography variant="h6" color="textSecondary">Sorry, no jobs found.</Typography>
+      </Box>
+    </Grid>
+  )}
+</Grid>
+
         {jobStatus === 'loading' && <p>Loading...</p>}
       </Box>
     </div>
