@@ -3,7 +3,7 @@
 
 1. Clone the repository to your local machine :
 ```bash
- https://github.com/sridhar7601/job-hunt-web-app.git
+ git clone https://github.com/sridhar7601/job-hunt-web-app.git
 ```
 2. Navigate to the file and install the necessary files :
 ```bash
