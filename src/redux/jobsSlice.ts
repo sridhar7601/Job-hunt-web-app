@@ -49,7 +49,7 @@ export const fetchJobListings = createAsyncThunk<Job[], number, { rejectValue: s
     try {
       const response = await axios.post(
         'https://api.weekday.technology/adhoc/getSampleJdJSON', 
-        { limit: 20, offset: (page - 1) * 10, filters }, 
+        { limit: 10, offset: (page - 1) * 10, filters }, 
         { headers: { 'Content-Type': 'application/json' } }
       );
       const jdList = response.data.jdList;
@@ -92,13 +92,24 @@ const jobsSlice = createSlice({
     },
     filterJobs: (state) => {
       const { experience, baseSalary, location, role, companyName } = state.filters;
-      state.jobs = state.allJobs.filter(job =>
-        (experience.length === 0 || experience.includes(job.minExp.toString())) &&
-        (baseSalary.length === 0 || baseSalary.includes(job.minJdSalary.toString())) &&
-        (location.length === 0 || location.includes(job.location)) &&
-        (role.length === 0 || role.includes(job.title)) &&
-        (companyName === '' || job.company.toLowerCase().includes(companyName.toLowerCase()))
-      );
+      state.jobs = state.allJobs.filter(job => {
+        // Check if job matches experience filter
+        const experienceMatch = experience.length === 0 || experience.some(range => {
+          const [min, max] = range.split('-').map(Number);
+          return job.minExp >= min && job.maxExp <= max;
+        });
+        // Check if job matches baseSalary filter
+        const baseSalaryMatch = baseSalary.length === 0 || baseSalary.some(range => {
+          const [min, max] = range.split('-').map(Number);
+          return job.minJdSalary >= min && job.maxJdSalary <= max;
+        });
+        // Check if job matches other filters
+        const locationMatch = location.length === 0 || location.includes(job.location);
+        const roleMatch = role.length === 0 || role.includes(job.title);
+        const companyNameMatch = companyName === '' || job.company.toLowerCase().includes(companyName.toLowerCase());
+        // Return true if job matches all filters
+        return experienceMatch && baseSalaryMatch && locationMatch && roleMatch && companyNameMatch;
+      });
     },
   },
   extraReducers: (builder) => {
