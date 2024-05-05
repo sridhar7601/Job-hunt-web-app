@@ -1,13 +1,17 @@
-import React, { useState } from "react";
+import React from "react";
 import { Autocomplete, TextField, FormControl, MenuItem } from "@mui/material";
 import CheckIcon from "@mui/icons-material/Check";
+import { useDispatch, useSelector } from 'react-redux';
+import { setLocationFilter, filterJobs } from '../../redux/jobsSlice';
 
-const Remote = ({ onChange }) => {
-  const [selectedNames, setSelectedNames] = useState([]);
+const Remote = () => {
+  const dispatch = useDispatch();
+  const selectedNames = useSelector((state: { jobs: JobsState }) => state.jobs.filters.location);
 
   const handleOnChange = (event, newValue) => {
-    setSelectedNames(newValue);
-    onChange(newValue);
+    console.log("Selected location:", newValue);
+    dispatch(setLocationFilter(newValue));
+    dispatch(filterJobs());
   };
 
   return (

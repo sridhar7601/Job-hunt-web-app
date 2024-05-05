@@ -1,13 +1,17 @@
-import React, { useState } from "react";
+import React from "react";
 import { Autocomplete, TextField, FormControl, MenuItem } from "@mui/material";
 import CheckIcon from "@mui/icons-material/Check";
+import { useDispatch, useSelector } from 'react-redux';
+import { setRoleFilter, filterJobs } from '../../redux/jobsSlice';
 
-const Roles = ({ onChange }) => {
-  const [selectedNames, setSelectedNames] = useState([]);
+const Roles = () => {
+  const dispatch = useDispatch();
+  const selectedNames = useSelector((state: { jobs: JobsState }) => state.jobs.filters.role);
 
   const handleOnChange = (event, newValue) => {
-    setSelectedNames(newValue);
-    onChange(newValue);
+    console.log("Selected role:", newValue);
+    dispatch(setRoleFilter(newValue));
+    dispatch(filterJobs());
   };
 
   return (
