@@ -1,5 +1,13 @@
 # React + TypeScript + Vite
+### Screenshot of UI 
+
 ### Steps to run the repository locally
+<img width="1280" alt="Screenshot 2024-05-06 at 9 56 20 AM" src="https://github.com/sridhar7601/job-hunt-web-app/assets/56919037/c30495f4-ba77-4188-a583-95f96dc31717">
+<img width="1280" alt="Screenshot 2024-05-06 at 9 56 49 AM" src="https://github.com/sridhar7601/job-hunt-web-app/assets/56919037/bcb37812-917a-4aa9-9661-9cdabd05e8bc">
+
+
+https://github.com/sridhar7601/job-hunt-web-app/assets/56919037/069e8709-3c49-41d0-aaf8-a1aa8a138a03
+
 
 1. Clone the repository to your local machine :
 ```bash
