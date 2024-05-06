@@ -3,7 +3,7 @@ import JobListingPage from "./components/pages/JobListingPage";
 import './App'
 const App = () => {
   return (
-    <div>
+    <div style={{height:'100vh'}}>
       <JobListingPage />
     </div>
   );
