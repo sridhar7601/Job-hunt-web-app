@@ -95,7 +95,7 @@ const Card: React.FC<CardProps> = ({ job }) => {
             ) : (
               <FadingText>
                 <Typography>{`About`}</Typography>
-                <Typography>{`${job.description.slice(0, 100)}...`}</Typography>
+                <Typography>{`${job.description.slice(0, 330)}...`}</Typography>
               </FadingText>
             )}
             <Button
