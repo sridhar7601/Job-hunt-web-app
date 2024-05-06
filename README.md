@@ -2,11 +2,12 @@
 ### Screenshot of UI 
 
 ### Steps to run the repository locally
-<img width="1280" alt="Screenshot 2024-05-06 at 9 56 20 AM" src="https://github.com/sridhar7601/job-hunt-web-app/assets/56919037/c30495f4-ba77-4188-a583-95f96dc31717">
-<img width="1280" alt="Screenshot 2024-05-06 at 9 56 49 AM" src="https://github.com/sridhar7601/job-hunt-web-app/assets/56919037/bcb37812-917a-4aa9-9661-9cdabd05e8bc">
+![normalimg](https://github.com/sridhar7601/job-hunt-web-app/assets/56919037/479247c0-24e2-4562-bdc1-978a72fb9fa8)
+![searchimg](https://github.com/sridhar7601/job-hunt-web-app/assets/56919037/f04c75d4-7a0e-43de-bd7b-f3094cd37a88)
 
 
-https://github.com/sridhar7601/job-hunt-web-app/assets/56919037/069e8709-3c49-41d0-aaf8-a1aa8a138a03
+
+https://github.com/sridhar7601/job-hunt-web-app/assets/56919037/bab44cc1-9d85-420e-87fc-f280f95f8bc9
 
 
 1. Clone the repository to your local machine :
