@@ -7,19 +7,21 @@ import { setLocationFilter, filterJobs } from '../../redux/jobsSlice';
 const Remote = () => {
   const dispatch = useDispatch();
   const selectedNames = useSelector((state: { jobs: JobsState }) => state.jobs.filters.location);
+  const allOptions = ["Delhi Ncr", "Mumbai", "Remote", "Chennai", "Bangalore"].map(option => option.toLowerCase());
+  const availableOptions = allOptions.filter(option => !selectedNames.includes(option));
 
   const handleOnChange = (event, newValue) => {
     console.log("Selected location:", newValue);
     dispatch(setLocationFilter(newValue.map(role => role.toLowerCase())));
     dispatch(filterJobs());
-  };
+  }
 
   return (
     <FormControl sx={{ m: 1, width: 250 }}>
       <Autocomplete
         multiple
         id="location-filter"
-        options={["Delhi Ncr", "Mumbai", "Remote", "Chennai", "Bangalore"]}
+        options={availableOptions}
         getOptionLabel={(option) => option}
         value={selectedNames}
         onChange={handleOnChange}

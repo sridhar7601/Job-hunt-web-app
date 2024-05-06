@@ -14,14 +14,19 @@ const Roles = () => {
     dispatch(setRoleFilter(newValue.map(role => role.toLowerCase())));
     dispatch(filterJobs());
   };
-  
+
+  // Define all options
+  const allOptions = ["Frontend", "Ios", "Android", "Tech lead", "Backend"].map(option => option.toLowerCase());
+
+  // Filter out the selected options
+  const availableOptions = allOptions.filter(option => !selectedNames.includes(option));
 
   return (
     <FormControl sx={{ m: 1, width: 250 }}>
       <Autocomplete
         multiple
         id="employee-filter"
-        options={["Frontend", "Ios", "Android", "Tech lead", "Backend"]}
+        options={availableOptions}
         getOptionLabel={(option) => option}
         value={selectedNames}
         onChange={handleOnChange}
