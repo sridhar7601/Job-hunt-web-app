@@ -70,10 +70,12 @@ const Card: React.FC<CardProps> = ({ job }) => {
               </Grid>
               <Grid item xs={12} sm={9}>
                 <div>
-                  <Typography variant="h6">{job.title.toUpperCase()}</Typography>
+                  <Typography variant="h6">
+                    {job.title.toUpperCase()}
+                  </Typography>
                   <Typography color="textSecondary">{job.company}</Typography>
                   <Typography>{job.location.toUpperCase()}</Typography>
-</div>
+                </div>
               </Grid>
             </Grid>
           </Grid>
@@ -82,7 +84,7 @@ const Card: React.FC<CardProps> = ({ job }) => {
               {job.minJdSalary !== null && job.maxJdSalary !== null ? (
                 `Salary: ${job.minJdSalary} - ${job.maxJdSalary} ✅ per year`
               ) : (
-                <Typography>{`Yet to update`}</Typography>
+                <Typography>{`Yet to update salary`}</Typography>
               )}
             </Typography>
           </Grid>
@@ -121,44 +123,51 @@ const Card: React.FC<CardProps> = ({ job }) => {
                     {job.minExp !== null && job.maxExp !== null ? (
                       `Experience: ${job.minExp} - ${job.maxExp}`
                     ) : (
-                      <Typography>{`Yet to update`}</Typography>
+                      <Typography>{`Yet to update Experience`}</Typography>
                     )}
                   </Typography>
                 </Grid>
-                <Grid item xs={12} md={6}>
-                  <Button
-                    variant="contained"
-                    sx={{
-                      backgroundColor: "#54f0c4", // Change button background color
-                      width: "100%", // Set button width to 100% of its container
-                      color: "black", // Change button text color to black
-                      fontSize: "14px", // Change font size
-                      fontWeight: 500, // Change font weight
-                      "&:hover": {
-                        backgroundColor: "#54f0c4", // Change hover background color
-                      },
-                    }}
-                  >
-                    ⚡ Easy Apply
-                  </Button>
-                </Grid>
-                <Grid item xs={12} md={6}>
-                  <Button
-                    variant="contained"
-                    sx={{
-                      backgroundColor: "#4c44db", // Change button background color
-                      width: "100%", // Set button width to 100% of its container
-                      color: "white", // Change button text color to black
-                      fontSize: "14px", // Change font size
-                      fontWeight: 500, // Change font weight
-                      "&:hover": {
-                        backgroundColor: "#4c44db", // Change hover background color
-                      },
-                    }}
-                  >
-                    🧑‍🍼 Referral
-                  </Button>
-                </Grid>
+                <Grid
+  container
+  direction="column"
+  alignItems="center"
+  item
+  xs={12}
+>
+  <Button
+    variant="contained"
+    sx={{
+      backgroundColor: "#54f0c4",
+      width: "100%",
+      color: "black",
+      fontSize: "14px",
+      fontWeight: 500,
+      marginBottom: "8px", // Add margin at the bottom
+      "&:hover": {
+        backgroundColor: "#54f0c4",
+      },
+    }}
+  >
+    ⚡ Easy Apply
+  </Button>
+  <Button
+    variant="contained"
+    sx={{
+      backgroundColor: "#4c44db",
+      width: "100%",
+      color: "white",
+      fontSize: "14px",
+      fontWeight: 500,
+      "&:hover": {
+        backgroundColor: "#4c44db",
+      },
+    }}
+  >
+    🧑‍🍼 Referral
+  </Button>
+</Grid>
+
+
               </Grid>
             </Grid>
           </Grid>
