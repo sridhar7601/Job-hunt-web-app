@@ -2,10 +2,8 @@
 ### Screenshot of UI 
 
 ### Steps to run the repository locally
-![normalimg](https://github.com/sridhar7601/job-hunt-web-app/assets/56919037/479247c0-24e2-4562-bdc1-978a72fb9fa8)
-![searchimg](https://github.com/sridhar7601/job-hunt-web-app/assets/56919037/f04c75d4-7a0e-43de-bd7b-f3094cd37a88)
-
-
+![normal](https://github.com/sridhar7601/job-hunt-web-app/assets/56919037/f8e0f5d6-214b-4309-8b52-fa545ad97500)
+![search](https://github.com/sridhar7601/job-hunt-web-app/assets/56919037/bd8bcd6b-b8df-4923-ba75-5487b583bf3e)
 
 https://github.com/sridhar7601/job-hunt-web-app/assets/56919037/bab44cc1-9d85-420e-87fc-f280f95f8bc9
 
