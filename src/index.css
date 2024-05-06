@@ -65,6 +65,8 @@ h1 {
 }
 .css-zow5z4-MuiGrid-root{
   margin-left: 0 !important;
+}.css-1i61cjx-MuiPaper-root-MuiCard-root{
+  max-width: fit-content;
 }
 button {
   border-radius: 8px;

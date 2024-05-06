@@ -67,40 +67,38 @@ const JobListingPage: React.FC = () => {
           <SearchCompanyName />
         </div>
       </div>
-      <Box
-      >
-        <Grid container spacing={3}>
-          {jobs.length > 0 ? (
-            jobs.map((job, index) => (
-              <Grid
-                key={job.id + "-" + index}
-                item
-                xs={12}
-                sm={6}
-                md={4}
-                style={{ minWidth: "300px" }}
-              >
-                <Card job={job} />
-              </Grid>
-            ))
-          ) : (
-            <Grid
-              container
-              justifyContent="center"
-              alignItems="center"
-              style={{ minHeight: "0vh" }}
-            >
-              <Box>
-                <Typography variant="h6" color="textSecondary">
-                  Sorry, no jobs found.
-                </Typography>
-              </Box>
-            </Grid>
-          )}
+      <Box>
+  <Grid container spacing={3} justifyContent="center">
+    {jobs.length > 0 ? (
+      jobs.map((job, index) => (
+        <Grid
+          key={job.id + "-" + index}
+          item
+          xs={12}
+          sm={6}
+          md={4}
+          style={{ minWidth: "300px" }}
+        >
+          <Card job={job} />
         </Grid>
+      ))
+    ) : (
+      <Grid
+        container
+        justifyContent="center"
+        alignItems="center"
+        style={{ minHeight: "0vh" }}
+      >
+        <Box>
+          <Typography variant="h6" color="textSecondary">
+            Sorry, no jobs found.
+          </Typography>
+        </Box>
+      </Grid>
+    )}
+  </Grid>
+</Box>
 
-        {jobStatus === "loading" && <p>Loading...</p>}
-      </Box>
     </div>
   );
 };
