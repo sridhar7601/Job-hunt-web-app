@@ -4,7 +4,7 @@ import './App'
 const App = () => {
   return (
     <div style={{height:'100vh'}}>
-~     <JobListingPage />
+    <JobListingPage />
     </div>
   );
 };
