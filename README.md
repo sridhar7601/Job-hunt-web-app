@@ -20,7 +20,7 @@ cd job-hunt-web-app && npm i
 ```bash
 npm run dev
 ```
-#Problems Faced 
+# Problems Faced 
 ### Reconciliation
 
 Reconciliation is the process React uses to efficiently update the UI based on changes to the component tree. It ensures that only the necessary changes are made to the DOM, improving performance by avoiding unnecessary re-renders.
@@ -29,7 +29,7 @@ I've tried to solve the major issues created while doing
 ### Improvement
 Still, a few areas to be addressed such as implementing lazy loading and usememo or usecallback for memorization and unnecessary re-renders and usage of polyfills may work across all browser
 As I'm in the phase of learning all these I will try to implement all ASAP 
-
+(Still Mui can be used almost)
 ### Task covered 
 1. Job Cards: Each job listing should be displayed as a card containing the following information:
 Job title
