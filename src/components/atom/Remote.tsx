@@ -10,7 +10,7 @@ const Remote = () => {
   const allOptions = ["Delhi Ncr", "Mumbai", "Remote", "Chennai", "Bangalore"].map(option => option.toLowerCase());
   const availableOptions = allOptions.filter(option => !selectedNames.includes(option));
 
-  const handleOnChange = ( newValue:any) => {
+  const handleOnChange = ( event,newValue) => {
     // console.log("Selected location:", newValue);
     dispatch(setLocationFilter(newValue.map(role => role.toLowerCase())));
     dispatch(filterJobs());

@@ -6,7 +6,7 @@ import { setRoleFilter, filterJobs } from '../../redux/jobsSlice';
 
 const Roles = () => {
   const dispatch = useDispatch();
-  const selectedNames = useSelector((state: { jobs: any }) => state.jobs.filters.role);
+  const selectedNames = useSelector((state: { jobs: JobsState }) => state.jobs.filters.role);
 
   const handleOnChange = (event, newValue) => {
     // console.log("Selected role:", newValue);

@@ -6,11 +6,11 @@ import { setBaseSalaryFilter, filterJobs } from '../../redux/jobsSlice';
 
 const MinBasePay = () => {
   const dispatch = useDispatch();
-  const selectedNames = useSelector((state: { jobs: any }) => state.jobs.filters.baseSalary);
+  const selectedNames = useSelector((state: { jobs: JobsState }) => state.jobs.filters.baseSalary);
   const allOptions = ["0-5","6-10","11-20","21-50","51-69","70+"];
   const availableOptions = allOptions.filter(option => !selectedNames.includes(option));
 
-  const handleOnChange = ( newValue:any) => {
+  const handleOnChange = (event, newValue) => {
     // console.log("Selected base salary:", newValue);
     dispatch(setBaseSalaryFilter(newValue));
     dispatch(filterJobs());

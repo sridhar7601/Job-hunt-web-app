@@ -1,5 +1,5 @@
 
-// import React from "react";
+import React from "react";
 import { Autocomplete, TextField, FormControl, MenuItem } from "@mui/material";
 import CheckIcon from "@mui/icons-material/Check";
 import { useDispatch, useSelector } from 'react-redux';
@@ -8,11 +8,11 @@ import { setExperienceFilter, filterJobs } from '../../redux/jobsSlice';
 // Experience Component
 const Experience = () => {
   const dispatch = useDispatch();
-  const selectedNames = useSelector((state: { jobs:any }) => state.jobs.filters.experience);
+  const selectedNames = useSelector((state: { jobs:JobsState }) => state.jobs.filters.experience);
   const allOptions = ["0-1", "1-3", "3-10"];
   const availableOptions = allOptions.filter(option => !selectedNames.includes(option));
 
-  const handleOnChange = ( newValue:any) => {
+  const handleOnChange = (event, newValue:any) => {
     // console.log("Selected experience:", newValue);
     dispatch(setExperienceFilter(newValue));
     dispatch(filterJobs());
