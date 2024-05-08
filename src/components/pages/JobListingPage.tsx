@@ -77,7 +77,7 @@ const JobListingPage: React.FC = () => {
           xs={12}
           sm={6}
           md={4}
-          style={{ minWidth: "300px", display: 'flex', justifyContent: 'center' }}
+          style={{ minWidth: "300px" }}
           >
           <Card job={job} />
         </Grid>
