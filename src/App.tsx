@@ -1,4 +1,4 @@
-import React from "react";
+// import React from "react";
 import JobListingPage from "./components/pages/JobListingPage";
 import './App'
 const App = () => {

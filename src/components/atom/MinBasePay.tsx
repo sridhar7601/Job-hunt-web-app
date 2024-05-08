@@ -1,4 +1,4 @@
-import React from "react";
+// import React from "react";
 import { Autocomplete, TextField, FormControl, MenuItem } from "@mui/material";
 import CheckIcon from "@mui/icons-material/Check";
 import { useDispatch, useSelector } from 'react-redux';
@@ -6,12 +6,12 @@ import { setBaseSalaryFilter, filterJobs } from '../../redux/jobsSlice';
 
 const MinBasePay = () => {
   const dispatch = useDispatch();
-  const selectedNames = useSelector((state: { jobs: JobsState }) => state.jobs.filters.baseSalary);
+  const selectedNames = useSelector((state: { jobs: any }) => state.jobs.filters.baseSalary);
   const allOptions = ["0-5","6-10","11-20","21-50","51-69","70+"];
   const availableOptions = allOptions.filter(option => !selectedNames.includes(option));
 
-  const handleOnChange = (event, newValue) => {
-    console.log("Selected base salary:", newValue);
+  const handleOnChange = ( newValue:any) => {
+    // console.log("Selected base salary:", newValue);
     dispatch(setBaseSalaryFilter(newValue));
     dispatch(filterJobs());
   };

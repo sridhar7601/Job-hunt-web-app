@@ -9,7 +9,7 @@ const SearchCompanyName = () => {
 
   const handleSearchChange = (event) => {
     const value = event.target.value;
-    console.log("Search company name:", value);
+    // console.log("Search company name:", value);
     dispatch(setCompanyNameFilter(value));
     dispatch(filterJobs());
   };

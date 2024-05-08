@@ -1,4 +1,4 @@
-import React from "react";
+// import React from "react";
 import { Autocomplete, TextField, FormControl, MenuItem } from "@mui/material";
 import CheckIcon from "@mui/icons-material/Check";
 import { useDispatch, useSelector } from 'react-redux';
@@ -6,10 +6,10 @@ import { setRoleFilter, filterJobs } from '../../redux/jobsSlice';
 
 const Roles = () => {
   const dispatch = useDispatch();
-  const selectedNames = useSelector((state: { jobs: JobsState }) => state.jobs.filters.role);
+  const selectedNames = useSelector((state: { jobs: any }) => state.jobs.filters.role);
 
   const handleOnChange = (event, newValue) => {
-    console.log("Selected role:", newValue);
+    // console.log("Selected role:", newValue);
     // Convert the selected roles to lowercase before dispatching
     dispatch(setRoleFilter(newValue.map(role => role.toLowerCase())));
     dispatch(filterJobs());

@@ -1,4 +1,4 @@
-import React from "react";
+// import React from "react";
 import { Autocomplete, TextField, FormControl, MenuItem } from "@mui/material";
 import CheckIcon from "@mui/icons-material/Check";
 import { useDispatch, useSelector } from 'react-redux';
@@ -10,8 +10,8 @@ const Remote = () => {
   const allOptions = ["Delhi Ncr", "Mumbai", "Remote", "Chennai", "Bangalore"].map(option => option.toLowerCase());
   const availableOptions = allOptions.filter(option => !selectedNames.includes(option));
 
-  const handleOnChange = (event, newValue) => {
-    console.log("Selected location:", newValue);
+  const handleOnChange = ( newValue:any) => {
+    // console.log("Selected location:", newValue);
     dispatch(setLocationFilter(newValue.map(role => role.toLowerCase())));
     dispatch(filterJobs());
   }
